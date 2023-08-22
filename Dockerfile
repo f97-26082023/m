@@ -1,5 +1,5 @@
 # Build frontend dist.
-FROM node:18.12.1-alpine3.16 AS frontend
+FROM node:20.2.0-alpine3.16 AS frontend
 WORKDIR /frontend-build
 
 COPY ./web/package.json ./web/pnpm-lock.yaml ./
