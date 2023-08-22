@@ -104,6 +104,11 @@ const ShareMemoDialog: React.FC<Props> = (props: Props) => {
     toast.success(t("message.succeed-copy-link"));
   };
 
+  const handleCopyLinkRawBtnClick = () => {
+    copy(`${window.location.origin}/api/v1/memo/${memo.id}`);
+    toast.success(t("message.succeed-copy-link"));
+  };
+
   const memoVisibilityOptionSelectorItems = VISIBILITY_SELECTOR_ITEMS.map((item) => {
     return {
       value: item.value,
@@ -165,6 +170,10 @@ const ShareMemoDialog: React.FC<Props> = (props: Props) => {
           <button className="btn-normal h-8" onClick={handleCopyLinkBtnClick}>
             <Icon.Link className="w-4 h-auto mr-1" />
             {t("common.link")}
+          </button>
+          <button className="btn-normal h-8" onClick={handleCopyLinkRawBtnClick}>
+            <Icon.FileCode className="w-4 h-auto mr-1" />
+            {t("memo.raw")}
           </button>
         </div>
         <div className="w-full rounded-lg border-t overflow-clip">
