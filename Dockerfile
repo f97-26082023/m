@@ -11,7 +11,7 @@ COPY ./web/ .
 RUN pnpm build
 
 # Build backend exec file.
-FROM golang:1.19.3-alpine3.16 AS backend
+FROM golang:1.20.4-alpine3.16 AS backend
 WORKDIR /backend-build
 
 COPY . .
