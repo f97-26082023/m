@@ -104,6 +104,11 @@ const ShareMemoDialog: React.FC<Props> = (props: Props) => {
     toast.success(t("message.succeed-copy-link"));
   };
 
+  const handleCopyLinkRawBtnClick = () => {
+    copy(`https://f97.xyz/api/m/${memo.id}`);
+    toast.success(t("message.succeed-copy-link"));
+  };
+
   const memoVisibilityOptionSelectorItems = VISIBILITY_SELECTOR_ITEMS.map((item) => {
     return {
       value: item.value,
@@ -166,6 +171,10 @@ const ShareMemoDialog: React.FC<Props> = (props: Props) => {
             <Icon.Link className="w-4 h-auto mr-1" />
             {t("common.link")}
           </button>
+          <button className="btn-normal h-8" onClick={handleCopyLinkRawBtnClick}>
+            <Icon.FileCode className="w-4 h-auto mr-1" />
+            {t("memo.raw")}
+          </button>
         </div>
         <div className="w-full rounded-lg border-t overflow-clip">
           <div
@@ -174,7 +183,7 @@ const ShareMemoDialog: React.FC<Props> = (props: Props) => {
           >
             <span className="w-full px-6 pt-5 pb-2 text-sm text-gray-500">{memo.displayTsStr}</span>
             <div className="w-full px-6 text-base pb-4">
-              <MemoContent content={memo.content} showFull={true} />
+              <MemoContent content={memo.content} />
               <MemoResourceListView className="!grid-cols-2" resourceList={memo.resourceList} />
             </div>
             <div className="flex flex-row justify-between items-center w-full bg-gray-100 dark:bg-zinc-700 py-4 px-6">

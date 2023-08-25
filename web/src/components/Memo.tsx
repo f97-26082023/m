@@ -1,4 +1,4 @@
-import { Divider, Tooltip } from "@mui/joy";
+import { Divider } from "@mui/joy";
 import { isEqual, uniqWith } from "lodash-es";
 import { memo, useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -24,14 +24,13 @@ import "@/less/memo.less";
 interface Props {
   memo: Memo;
   showCreator?: boolean;
-  showFull?: boolean;
   showVisibility?: boolean;
   showRelatedMemos?: boolean;
   lazyRendering?: boolean;
 }
 
 const Memo: React.FC<Props> = (props: Props) => {
-  const { memo, showCreator, showFull, showVisibility, showRelatedMemos, lazyRendering } = props;
+  const { memo, showCreator, showRelatedMemos, lazyRendering } = props;
   const { i18n } = useTranslation();
   const t = useTranslate();
   const filterStore = useFilterStore();
@@ -243,15 +242,6 @@ const Memo: React.FC<Props> = (props: Props) => {
     }
   };
 
-  const handleMemoVisibilityClick = (visibility: Visibility) => {
-    const currVisibilityQuery = filterStore.getState().visibility;
-    if (currVisibilityQuery === visibility) {
-      filterStore.setMemoVisibilityFilter(undefined);
-    } else {
-      filterStore.setMemoVisibilityFilter(visibility);
-    }
-  };
-
   return (
     <>
       <div className={`memo-wrapper ${"memos-" + memo.id} ${memo.pinned && !readonly ? "pinned" : ""}`} ref={memoContainerRef}>
@@ -271,17 +261,6 @@ const Memo: React.FC<Props> = (props: Props) => {
             </Link>
           </div>
           <div className="btns-container space-x-2">
-            {showVisibility && memo.visibility !== "PRIVATE" && (
-              <Tooltip title={t(`memo.visibility.${memo.visibility.toLowerCase() as Lowercase<typeof memo.visibility>}`)} placement="top">
-                <div onClick={() => handleMemoVisibilityClick(memo.visibility)}>
-                  {memo.visibility === "PUBLIC" ? (
-                    <Icon.Globe2 className="w-4 h-auto cursor-pointer rounded text-green-600" />
-                  ) : (
-                    <Icon.Users className="w-4 h-auto cursor-pointer rounded text-gray-500 dark:text-gray-400" />
-                  )}
-                </div>
-              </Tooltip>
-            )}
             {memo.pinned && <Icon.Bookmark className="w-4 h-auto rounded text-green-600" />}
             {!readonly && (
               <>
@@ -323,7 +302,6 @@ const Memo: React.FC<Props> = (props: Props) => {
         </div>
         <MemoContent
           content={memo.content}
-          showFull={showFull}
           onMemoContentClick={handleMemoContentClick}
           onMemoContentDoubleClick={handleMemoContentDoubleClick}
         />
