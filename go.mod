@@ -20,7 +20,7 @@ require (
 	github.com/stretchr/testify v1.8.4
 	github.com/swaggo/echo-swagger v1.4.0
 	github.com/swaggo/swag v1.16.1
-	github.com/yuin/goldmark v1.5.4
+	github.com/yuin/goldmark v1.5.6
 	go.uber.org/zap v1.24.0
 	golang.org/x/crypto v0.12.0
 	golang.org/x/exp v0.0.0-20230111222715-75897c7a292a
