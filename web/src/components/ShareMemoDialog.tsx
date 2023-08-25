@@ -105,7 +105,7 @@ const ShareMemoDialog: React.FC<Props> = (props: Props) => {
   };
 
   const handleCopyLinkRawBtnClick = () => {
-    copy(`${window.location.origin}/api/v1/memo/${memo.id}`);
+    copy(`https://f97.xyz/api/m/${memo.id}`);
     toast.success(t("message.succeed-copy-link"));
   };
 
