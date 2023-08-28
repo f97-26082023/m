@@ -12,7 +12,7 @@ require (
 	github.com/google/cel-go v0.17.6
 	github.com/google/uuid v1.3.1
 	github.com/gorilla/feeds v1.1.1
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.17.0
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.17.1
 	github.com/labstack/echo/v4 v4.11.1
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.7.0
